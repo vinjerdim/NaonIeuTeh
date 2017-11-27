@@ -1,0 +1,23 @@
+{
+  "name": "OjekChatApp",
+  "version": "1.0.0",
+  "keywords": [
+    "util",
+    "functional",
+    "server",
+    "client",
+    "browser"
+  ],
+  "author": "VINJERDIM",
+  "contributors": [],
+  "dependencies": {
+    "cookie-parser": "1.4.3",
+    "express": "4.16.2",
+    "firebase-admin": "5.5.1",
+    "mongodb": "2.2.33",
+    "mysql": "2.15.0"
+  },
+  "scripts": {
+    "start": "node main.js"
+  }
+}

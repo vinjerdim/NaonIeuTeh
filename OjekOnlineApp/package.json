@@ -1,0 +1,14 @@
+{
+  "name": "OjekOnlineApp",
+  "version": "1.0.0",
+  "keywords": [
+    "util",
+    "functional",
+    "server",
+    "client",
+    "browser"
+  ],
+  "author": "VINJERDIM",
+  "contributors": [],
+  "dependencies": {}
+}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog" prefer="system">
+    <system systemId="http://localhost:8080/OjekIdentityService/AccountService?wsdl" uri="wsdl/localhost_8080/OjekIdentityService/AccountService.wsdl"/>
+    <system systemId="http://localhost:8080/OjekIdentityService/AccountService?xsd=1" uri="wsdl/localhost_8080/OjekIdentityService/AccountService.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/OjekIdentityService/ValidationService?wsdl" uri="wsdl/localhost_8080/OjekIdentityService/ValidationService.wsdl"/>
+    <system systemId="http://localhost:8080/OjekIdentityService/ValidationService?xsd=1" uri="wsdl/localhost_8080/OjekIdentityService/ValidationService.xsd_1.xsd"/>
+</catalog>

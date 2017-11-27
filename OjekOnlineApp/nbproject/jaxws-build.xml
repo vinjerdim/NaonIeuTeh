@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+        *** GENERATED FROM jax-ws.xml - DO NOT EDIT !                             ***
+        *** TO MODIFY wsimport options USE Web Service node -> Edit WS Attributes ***
+        *** TO CHANGE TARGETS GENERATED TO jaxws-build.xml COPY THOSE             ***
+        *** TARGETS TO ../build.xml AND MODIFY THAT FILE INSTEAD                  ***
+
+        --><project xmlns:xalan="http://xml.apache.org/xslt" xmlns:webproject2="http://www.netbeans.org/ns/web-project/2" xmlns:jaxws="http://www.netbeans.org/ns/jax-ws/1">
+    <!--
+                ===================
+                JAX-WS WSGEN SECTION
+                ===================
+            -->
+    <!--
+                ===================
+                JAX-WS WSIMPORT SECTION
+                ===================
+            -->
+    <target name="wsimport-init" depends="init">
+        <fail if="${wsimport.bad.version}" message="WsImport ant task defined in the classpath ${j2ee.platform.wsimport.classpath} has a serious bug. See http://wiki.netbeans.org/MetroIssue for details."/>
+        <mkdir dir="${build.generated.sources.dir}/jax-ws"/>
+        <property name="j2ee.platform.wsimport.classpath" value="${libs.jaxws21.classpath}"/>
+        <taskdef name="wsimport" classname="com.sun.tools.ws.ant.WsImport">
+            <classpath path="${java.home}/../lib/tools.jar:${j2ee.platform.wsimport.classpath}:${javac.classpath}"/>
+        </taskdef>
+        <condition property="conf-dir" value="${conf.dir}/" else="">
+            <isset property="conf.dir"/>
+        </condition>
+    </target>
+    <target name="wsimport-client-ProfileService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/ProfileService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/ProfileService" destdir="${build.generated.dir}/jax-wsCache/ProfileService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/ProfileService/wsdl/localhost_8080/OjekOnlineService/ProfileService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/OjekOnlineService/ProfileService?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/ProfileService/wsdl/localhost_8080/OjekOnlineService/ProfileService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/ProfileService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/ProfileService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-ProfileService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/ojekonlineservice"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/ProfileService"/>
+    </target>
+    <target name="wsimport-client-HistoryService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/HistoryService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/HistoryService" destdir="${build.generated.dir}/jax-wsCache/HistoryService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/HistoryService/wsdl/localhost_8080/OjekOnlineService/HistoryService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/OjekOnlineService/HistoryService?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/HistoryService/wsdl/localhost_8080/OjekOnlineService/HistoryService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/HistoryService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/HistoryService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-HistoryService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/ojekonlineservice"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/HistoryService"/>
+    </target>
+    <target name="wsimport-client-EditPrefService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/EditPrefService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/EditPrefService" destdir="${build.generated.dir}/jax-wsCache/EditPrefService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/EditPrefService/wsdl/localhost_8080/OjekOnlineService/EditPrefService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/OjekOnlineService/EditPrefService?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/EditPrefService/wsdl/localhost_8080/OjekOnlineService/EditPrefService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/EditPrefService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/EditPrefService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-EditPrefService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/ojekonlineservice"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/EditPrefService"/>
+    </target>
+    <target name="wsimport-client-OrderService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/OrderService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/OrderService" destdir="${build.generated.dir}/jax-wsCache/OrderService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/OrderService/wsdl/localhost_8080/OjekOnlineService/OrderService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/OjekOnlineService/OrderService?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/OrderService/wsdl/localhost_8080/OjekOnlineService/OrderService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/OrderService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/OrderService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-OrderService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/ojekonlineservice"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/OrderService"/>
+    </target>
+    <target name="wsimport-client-AccountService" depends="wsimport-init">
+        <mkdir dir="${build.generated.dir}/jax-wsCache/AccountService"/>
+        <wsimport sourcedestdir="${build.generated.dir}/jax-wsCache/AccountService" destdir="${build.generated.dir}/jax-wsCache/AccountService" wsdl="${basedir}/${conf-dir}xml-resources/web-service-references/AccountService/wsdl/localhost_8080/OjekIdentityService/AccountService.wsdl" catalog="catalog.xml" encoding="${source.encoding}" extension="true" verbose="true" fork="false" wsdlLocation="http://localhost:8080/OjekIdentityService/AccountService?wsdl" xnocompile="true" xendorsed="true">
+            <depends file="${basedir}/${conf-dir}xml-resources/web-service-references/AccountService/wsdl/localhost_8080/OjekIdentityService/AccountService.wsdl"/>
+            <produces dir="${build.generated.dir}/jax-wsCache/AccountService"/>
+        </wsimport>
+        <copy todir="${build.generated.sources.dir}/jax-ws">
+            <fileset dir="${build.generated.dir}/jax-wsCache/AccountService">
+                <include name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="wsimport-client-clean-AccountService" depends="-init-project">
+        <delete dir="${build.generated.sources.dir}/jax-ws/ojekidentityservice"/>
+        <delete dir="${build.generated.dir}/jax-wsCache/AccountService"/>
+    </target>
+    <target name="wsimport-client-generate" depends="wsimport-client-ProfileService, wsimport-client-HistoryService, wsimport-client-EditPrefService, wsimport-client-OrderService, wsimport-client-AccountService"/>
+</project>

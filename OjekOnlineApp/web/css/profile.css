@@ -1,0 +1,154 @@
+.profile-picture {
+  width: 150px;
+  height: 150px;
+  border: 5px solid black;
+  float: left;
+  border-radius: 500px;
+  clear: both;
+}
+
+#info-profile {
+  margin: 20px 0px;
+  height: auto;
+}
+
+.edit-pen {
+  float: right;
+  height: 30px;
+
+}
+
+.subtitle-profile {
+  float: left;
+  width: 200px;
+  font-size: 2em;
+  font-weight: bold;
+  font-family: 'Mutka', sans-serif;
+}
+
+#profile-pic-div {
+  margin: auto;
+  width: 160px;
+  height: 160px;
+}
+
+#edit-pen-div {
+  margin: auto;
+  height: auto;
+}
+
+.subtitle-cont {
+  margin-bottom: 20px;
+  height: 37px;
+}
+
+#info-text {
+  margin: auto;
+  font-size: 1.2em;
+}
+
+#list-info {
+  list-style: none;
+  text-align: center;
+  padding: 0px;
+}
+
+#prefer-loc-title {
+  font-size: 1.5em;
+  width: 400px;
+}
+
+.fa-star-o{
+  color: red;
+}
+
+#info-pref-text {
+  font-size: 1.2em;
+}
+
+.subtitle-history {
+  float: left;
+  font-size: 2em;
+  font-weight: bold;
+  font-family: 'Mutka', sans-serif;
+  margin-top: 20px; 
+}
+
+.history-pic-div {
+  width: 120px;
+  height: 120px;
+  margin: 0px 20px;
+  float: left;
+}
+
+.profile-pic-his {
+  width: 110px;
+  height: 110px;
+  border: 1px solid black;
+  float: left;
+}
+
+.history-list {
+  margin-top: 20px;
+  list-style: none;
+  padding: 0px;
+  height: auto;
+}
+
+.order-list {
+  display: block;
+}
+
+.driver-list {
+  display: block;
+}
+
+.active-list {
+  display:block;
+}
+
+.comment {
+  margin-left: 180px;
+}
+
+.hide{
+  width: auto;
+  padding: 10px 15px;
+  border: 1px solid black;
+  border-radius: 10px;
+  background-color: red;
+  position: absolute;
+  right: 0;
+}
+
+.his-text>span {
+  display: inline-block;
+}
+
+.list-text-his {
+  height: auto;
+  position: relative;
+  clear: both;
+}
+
+.date-his {
+  color: gray;
+}
+
+.name-his {
+  font-size: 1.2em;
+}
+
+.tab-active {
+  display: block;
+}
+
+.active {
+  color: #ffffff;
+  border-color: #000000;
+  background-color: #5A1E83;
+}
+
+.hide-element {
+  display: none;
+}

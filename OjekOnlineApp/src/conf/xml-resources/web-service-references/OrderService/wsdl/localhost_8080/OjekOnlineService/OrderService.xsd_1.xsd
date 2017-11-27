@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.4.0 (wsit240-7e98ff4; 2017-08-03T21:19:54+0200) JAXWS-RI/2.3.0 JAXWS-API/2.3.0 JAXB-RI/2.3.0 JAXB-API/2.3.0 svn-revision#unknown. --><xs:schema xmlns:tns="http://ojekonlineservice/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://ojekonlineservice/">
+
+<xs:element name="addTransaction" type="tns:addTransaction"/>
+
+<xs:element name="addTransactionResponse" type="tns:addTransactionResponse"/>
+
+<xs:element name="getDrivers" type="tns:getDrivers"/>
+
+<xs:element name="getDriversResponse" type="tns:getDriversResponse"/>
+
+<xs:complexType name="addTransaction">
+<xs:sequence>
+<xs:element name="passengerID" type="xs:string" minOccurs="0"/>
+<xs:element name="driverID" type="xs:string" minOccurs="0"/>
+<xs:element name="pickLoc" type="xs:string" minOccurs="0"/>
+<xs:element name="destLoc" type="xs:string" minOccurs="0"/>
+<xs:element name="stars" type="xs:string" minOccurs="0"/>
+<xs:element name="review" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addTransactionResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:boolean" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getDrivers">
+<xs:sequence>
+<xs:element name="preferredDriver" type="xs:string" minOccurs="0"/>
+<xs:element name="currentUserID" type="xs:int"/>
+<xs:element name="prefloc" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getDriversResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

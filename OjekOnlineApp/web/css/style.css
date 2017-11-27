@@ -1,0 +1,754 @@
+@charset "UTF-8";
+
+body {
+  width: 470px;
+  margin: auto;
+  font-family: 'Mutka', sans-serif;
+}
+
+textarea {
+  resize: none;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+/* Order Header */
+  .progress-container {
+    width: fit-content;
+    border-collapse:separate;
+    border-spacing: 10px 10px;
+    display: table;
+  }
+
+  .progress {
+    width: 25%;
+    height: 50px;
+    font-size: 70%;
+    border: 1px solid black;
+    text-align: left;
+    vertical-align: middle;
+    display: table-cell;
+  }
+
+  .progress-num {
+    display:inline-block;
+    background-color: #DDD;
+    width: 35px;
+    height: 35px;
+    font-size: 120%;
+    border-radius: 100%;
+    margin: 0px 5px;
+    line-height: 200%;
+    text-align: center;
+    vertical-align: middle;
+    float: left;
+  }
+
+  .selected {
+    background-color: #FFFF44;
+  }
+
+/* Header style */
+
+.header-box {
+  height: fit-content content-box;
+  width: fit-content content-box;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: none;
+  margin-bottom: none;
+  font-family: 'Mutka', sans-serif;
+  column-count: 2;
+  -moz-column-count: 2;
+  -webkit-column-count: 2;
+  -webkit-column-span: all; /* Chrome, Safari, Opera */
+  column-span: all;
+  column-gap: 40px;
+}
+
+.col-header-left {
+  width: 50% content-box;
+  float: left;
+  vertical-align: middle;
+}
+
+.logo-title {
+  font-family: 'Geo', sans-serif;
+  font-weight: bold;
+  font-size: 250%;
+  color: #5A1E83;
+}
+
+.tagline {
+  color: #311B92;
+}
+
+.col-header-right {
+  width: 50% content-box;
+  float: right;
+  text-align: right;
+  vertical-align: middle;
+  line-height: 2;
+}
+
+/* Menu style */
+
+.menu {
+  width: 100%;
+  display: table;
+  table-layout: fixed;
+}
+
+.menu > div.menu-column {
+  display: table-column;
+}
+
+.menu > div.menu-cell {
+  display: table-cell;
+  font-family: 'Mukta', sans-serif;
+  vertical-align: middle;
+  line-height: 50px;
+  text-align: center;
+  font-weight: bold;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.menu > div:hover, .menu > div.selected {
+  color: #ffffff;
+  border-color: #000000;
+  background-color: #5A1E83;
+}
+
+/* Footer style */
+.footer {
+  margin-top: 30px;
+  margin-bottom: 50px;
+  column-count: 3;
+  -moz-column-count: 3;
+  -webkit-column-count: 3;
+  -webkit-column-span: all;
+  column-span: all;
+  -moz-column-gap: 2em;
+  -webkit-column-gap: 2em;
+  column-gap: 1.5em;
+  column-rule-style: solid;
+  border-style: solid;
+  border-width: 2px;
+}
+
+.footer > div {
+  width: fit-content content-box;
+  text-align: center;
+  font-weight: bold;
+  font-family: 'Mukta', sans-serif;
+  vertical-align: middle;
+}
+
+.img-chooser {
+  padding-top: 20px;
+}
+
+.text-link {
+  text-decoration: none;
+  font-size: 120%;
+  font-weight: bold;
+  color: black;
+}
+
+
+
+/* Container */
+.container {
+  width: inherit;
+}
+
+.header {
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+.selectdriver-header {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.edit-profile-container {
+  font-family: Verdana;
+}
+
+.edit-profile-header {
+  text-transform: uppercase;
+  font-weight: bold;
+  width: 100%;
+  font-size: 170%;
+}
+
+.edit-profile-btm {
+  clear: both;
+}
+
+.form-editprofile{
+  margin: 5px 0;
+}
+
+.ep-textarea{
+  width: 60%;
+  float: right;
+  clear: both;
+}
+
+.content-layout {
+  background-color: rgb(124, 206, 43);
+  padding: 50px;
+  border: 10px solid rgb(10, 127, 10);
+  border-radius: 100px;
+  width: 350px;
+}
+
+.title {
+  height: 27px;
+  padding: 0px 20px;
+}
+
+.title>div>h1 {
+  text-align: center;
+  margin-top: 0px;
+  width: 100px;
+  float: left;
+}
+
+.title>div>hr {
+  float:left;
+  position: relative;
+  width: 100px;
+  top: 5px;
+  background-color: rgb(10, 127, 10);
+  height: 5px;
+  border: none;
+}
+
+.form-layout {
+  clear: left;
+}
+
+.form-input {
+  width: 350px;
+  margin-bottom: 5px;
+}
+
+.form-input>div {
+  float: left;
+  width: 135px;
+}
+
+.form-input>input {
+  width: 198px;
+}
+
+.checked-input>input {
+  width: 170px;
+}
+
+.driver-checkbox {
+  margin: 20px 0px;
+}
+
+.driver-checkbox>input {
+  float: left;
+  margin-left: 0px;
+}
+
+
+.cancel-button {
+  width: 75px;
+  height: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid black;
+  background-color: #D2002E;
+  border-radius: 10px;
+}
+
+.accept-button {
+  width: 75px;
+  height: 30px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid black;
+  background-color: #83D535;
+  border-radius: 10px;
+}
+
+.driver-completeorder-pic {
+  height: 100px;
+  width: 100px;
+  margin: 10px;
+  border-radius: 100%;
+  border: 3px solid #5A1E83;
+}
+
+.completeorder-container {
+  text-align: center;
+  clear: both;
+}
+
+.right-align {
+  width: 100%;
+  text-align: right;
+}
+
+.driver-fullname-disp {
+  font-size: 105%;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+/*Chat*/
+.chatbox-container {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 10px 10px;
+  display: table;
+}
+
+.chatbox {
+  width: 100%;
+  height: 200px;
+  border-radius: 1px;
+  border: 1px solid black;
+  overflow: auto;
+}
+
+.textbox {
+  width: 100%;
+  height: 50px;
+  border-radius: 1px;
+  border: 1px solid black;
+  border-top: 0px;
+}
+
+.text-text {
+  width: 74%;
+  margin-top: 15px;
+  padding-left: 7px;
+  border: none;
+  border-color: transparent;
+}
+
+.kirim-button {
+  width: 23%;
+  background-color: #4CAF50;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  color: black;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 13px;
+  font-family: serif;
+  cursor: pointer;
+}
+
+.red-button {
+  background-color: red;
+}
+
+.green-button {
+  background-color: green;
+  margin: 100px 145px 100px 145px !important;
+}
+
+.clickable-button {
+  width: 40%;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 10px 30px 10px;
+  margin: 20px 0 0 145px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+  font-family: serif;
+  cursor: pointer;
+}
+
+.chat-baloon {
+  width: 34%;
+  border: 1px solid black;
+  border-radius: 5px;
+  color: black;
+  display: inline-block;
+  padding: 7px;
+  font-size: 13px;
+  font-family: serif;
+}
+
+.chat-baloon-left {
+  background-color: #FFFFD5;
+  margin: 10px;
+}
+
+.chat-baloon-right {
+  background-color: #D9E9FF;
+  margin: 10px;
+  margin-left: 60%;
+}
+
+.margin20 {
+  margin-top: 20px;
+}
+
+.left {
+  text-align: left;
+}
+
+.right {
+  text-align: right;
+}
+
+.looking-for-order {
+  font-weight: bold;
+  margin: 100px 0 50px 0 !important;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 25px;
+}
+
+.got-an-order-green{
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.got-an-order{
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 20px;
+}
+
+/*Select driver*/
+.select-driver {
+  width: auto;
+  padding: 0 10px;
+  border-radius: 12px;
+  border: 1px solid black;
+  margin: 10px 0;
+}
+
+.driver-content {
+  height: 120px;
+  overflow: hidden;
+}
+
+.driver-pic {
+  height: 100px;
+  width: 100px;
+  margin: 10px;
+  border-radius: 100%;
+  border: 3px solid #5A1E83;
+  float: left;
+}
+
+.driver-name-disp {
+  font-size: 160%;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.driver-rating-disp {
+  color: orange;
+  font-size: 110%;
+}
+
+.driver-not-found {
+  color: grey;
+  height: 70px;
+  text-align: center;
+  text-transform: none;
+  line-height: 70px;
+  vertical-align: middle;
+}
+
+.vote-disp {
+  color: black;
+}
+
+.select-driver-btn {
+  width: auto;
+  color: white;
+  background-color: #5A1E83;
+  letter-spacing: 0.5px;
+  float: right;
+}
+
+.order-btn {
+  float: none;
+  clear: both;
+}
+
+#profile-pic {
+  width: 150px;
+  height: 150px;
+  border: 1px solid black;
+  float: left;
+  margin-right: 25px;
+  margin-bottom: 30px;
+}
+
+#save-profile {
+  float: right;
+  margin-right: 120px;
+}
+
+#register-button {
+  background-color: #4CAF50;
+  border: 5px solid rgb(10, 127, 10);
+  border-radius: 20px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+#button-layout>div {
+  float: left;
+  width: 200px;
+  height: 66px;
+}
+
+#button-layout a {
+  position: relative;
+  top: 20px;
+}
+
+
+.button-form {
+  text-align: right;
+  width: 350px;
+}
+
+.button-form div {
+  float: left;
+}
+
+.completeorder-btn {
+  width: 100px;
+  height: 50px;
+  float: none;
+}
+
+ /* The switch - the box around the slider */
+ .switch {
+  position: relative;
+  display: inline-block;
+
+  width: 50px;
+  height: 25px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {display:none;}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 19px;
+  width: 19px;
+  left: 4px;
+  bottom: 3px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #1E7B25;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #1E7B25;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(23px);
+  -ms-transform: translateX(23px);
+  transform: translateX(23px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* Menu Order */
+.menu-order {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  font-size: 12px;
+  border-spacing: 20px 12px;
+}
+
+.menu-order-column {
+  height: 100%;
+}
+
+.menu-order-cell {
+  display: table-cell;
+  position: relative;
+  text-align: left;
+  font-weight: bold;
+}
+
+.menu-order-number
+{
+    position: relative;
+    display: block;
+    width: 50px;
+    height: 50px;
+    border-radius: 25px; /* or 50% */
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #311B92;
+    color: #ffffff;
+    line-height: 50px;
+}
+
+.menu-order-title
+{
+    position: relative;
+    display: inline-block;
+}
+
+#next-button-text {
+  line-height: 20px;
+  width: 75%;
+  padding-right: 1px;
+}
+
+input.next-button {
+  width: 20%;
+  height: 30px;
+  line-height: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: 1px solid black;
+  background-color: #83D535;
+  border-radius: 10px;
+  display: inline-block;
+}
+
+table, th, td {
+  table-layout: auto !important;
+  width: 100% auto !important;
+  max-width:100%;
+  white-space:nowrap;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+.pref-button {
+  width: 21px;
+  height: 21px;
+  vertical-align: middle;
+  border: none;
+  display: inline-block;
+}
+
+/** Rating **/
+.starRating:not(old){
+  display        : inline-block;
+  width          : 7.5em;
+  height         : 1.5em;
+  overflow       : hidden;
+  vertical-align : bottom;
+}
+
+.starRating:not(old) > input{
+  margin-right : -100%;
+  opacity      : 0;
+}
+
+.starRating:not(old) > label{
+  display         : block;
+  float           : right;
+  position        : relative;
+  background      : url('../img/star-off.svg');
+  background-size : contain;
+}
+
+.starRating:not(old) > label:before{
+  content         : '';
+  display         : block;
+  width           : 1.5em;
+  height          : 1.5em;
+  background      : url('../img/star-on.svg');
+  background-size : contain;
+  opacity         : 0;
+  transition      : opacity 0.2s linear;
+}
+
+.starRating:not(old) > label:hover:before,
+.starRating:not(old) > label:hover ~ label:before,
+.starRating:not(:hover) > :checked ~ label:before{
+  opacity : 1;
+}
+
+/* Font customization */
+/* latin */
+@font-face {
+  font-family: 'Geo';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Geo'), local('Geo-Regular'), url(./fonts/geo.woff2) format('woff2');
+}
+
+/* devanagari */
+@font-face {
+  font-family: 'Mukta';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Mukta Regular'), local('Mukta-Regular'), url(./fonts/mukta1.woff2) format('woff2');
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Mukta';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Mukta Regular'), local('Mukta-Regular'), url(./fonts/mukta1.woff2) format('woff2');
+}
+/* latin */
+@font-face {
+  font-family: 'Mukta';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Mukta Regular'), local('Mukta-Regular'), url(./fonts/mukta1.woff2) format('woff2');
+}

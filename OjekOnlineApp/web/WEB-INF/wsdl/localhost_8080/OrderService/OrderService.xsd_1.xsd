@@ -1,0 +1,138 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.4.0 (wsit240-7e98ff4; 2017-08-03T21:19:54+0200) JAXWS-RI/2.3.0 JAXWS-API/2.3.0 JAXB-RI/2.3.0 JAXB-API/2.3.0 svn-revision#unknown. --><xs:schema xmlns:tns="http://ojekonlineservice/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://ojekonlineservice/">
+
+<xs:element name="SQLException" type="tns:SQLException"/>
+
+<xs:element name="getDriverAll" type="tns:getDriverAll"/>
+
+<xs:element name="getDriverAllResponse" type="tns:getDriverAllResponse"/>
+
+<xs:element name="getDriverRatingVote" type="tns:getDriverRatingVote"/>
+
+<xs:element name="getDriverRatingVoteResponse" type="tns:getDriverRatingVoteResponse"/>
+
+<xs:element name="getHistory" type="tns:getHistory"/>
+
+<xs:element name="getHistoryResponse" type="tns:getHistoryResponse"/>
+
+<xs:element name="getSelectedDriver" type="tns:getSelectedDriver"/>
+
+<xs:element name="getSelectedDriverResponse" type="tns:getSelectedDriverResponse"/>
+
+<xs:element name="getSpesific" type="tns:getSpesific"/>
+
+<xs:element name="getSpesificResponse" type="tns:getSpesificResponse"/>
+
+<xs:element name="inputOrder" type="tns:inputOrder"/>
+
+<xs:element name="inputOrderResponse" type="tns:inputOrderResponse"/>
+
+<xs:complexType name="getDriverAll">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getDriverAllResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getSelectedDriver">
+<xs:sequence>
+<xs:element name="dest" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getSelectedDriverResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="inputOrder">
+<xs:sequence>
+<xs:element name="token" type="xs:string" minOccurs="0"/>
+<xs:element name="accountID" type="xs:int"/>
+<xs:element name="driverID" type="xs:int"/>
+<xs:element name="from" type="xs:string" minOccurs="0"/>
+<xs:element name="dest" type="xs:string" minOccurs="0"/>
+<xs:element name="date" type="xs:string" minOccurs="0"/>
+<xs:element name="comment" type="xs:string" minOccurs="0"/>
+<xs:element name="star" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="inputOrderResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getSpesific">
+<xs:sequence>
+<xs:element name="accountID" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getSpesificResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getDriverRatingVote">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getDriverRatingVoteResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getHistory">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getHistoryResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="SQLException">
+<xs:sequence>
+<xs:element name="SQLState" type="xs:string" minOccurs="0"/>
+<xs:element name="errorCode" type="xs:int"/>
+<xs:element name="message" type="xs:string" minOccurs="0"/>
+<xs:element name="nextException" type="tns:sqlException" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="sqlException">
+<xs:complexContent>
+<xs:extension base="tns:exception">
+<xs:sequence>
+<xs:element name="nextException" type="tns:sqlException" minOccurs="0"/>
+</xs:sequence>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="exception">
+<xs:complexContent>
+<xs:extension base="tns:throwable">
+<xs:sequence/>
+</xs:extension>
+</xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="throwable">
+<xs:sequence>
+<xs:element name="stackTrace" type="tns:stackTraceElement" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="stackTraceElement" final="extension restriction">
+<xs:sequence/>
+</xs:complexType>
+</xs:schema>
