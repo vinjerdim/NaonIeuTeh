@@ -74,7 +74,7 @@
                         Hi, <b><% out.print(username);;%></b> !
                     </div>
                     <div>
-                        <a href="Logout">Logout</a>
+                        <a href="Logout" onclick="cancel(<%=id%>)">Logout</a>
                     </div>
                 </div>
             </header>
@@ -87,3 +87,15 @@
                 <div id="profileheader" class="menu-cell"><a href="Profile" class="text-link">MY PROFILE</a></div>
             </div>
         </div>
+<script>
+    function cancel(id) {
+        $.get("http://localhost:3000/findorder/cancel?accountid=" + id);
+    }
+    
+    var expression = "/WaitingForOrder";
+    var regex = new RegExp(expression);
+    var url = document.URL;
+    if (!url.match(regex)) {
+        cancel(<%=id%>);
+    }
+</script>

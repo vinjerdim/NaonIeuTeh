@@ -8,15 +8,16 @@
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 
 <script>
-
 var app = angular.module("myApp", []);
 
 app.controller("myCtrl", function($scope) {
-    $scope.json = {driverID:"3", clientID:"5", chat:[{id:"3",msg:"hello"},
-            {id:"5",msg:"woi"},{id:"3",msg:"naon maneh"},
+    $scope.json = {driverID:"3", clientID:"10", chat:[{id:"3",msg:"hello"},
+            {id:"10",msg:"woi"},{id:"3",msg:"naon maneh"},
+            {id:"3",msg:"kaideu geuwat"},{id:"3",msg:"hello"},
+            {id:"10",msg:"woi"},{id:"3",msg:"naon maneh"},
             {id:"3",msg:"kaideu geuwat"}]}});
 
-</script> 
+</script>
 
 <div  ng-app="myApp" ng-controller="myCtrl" class="container">
     <div class="edit-profile-header">
@@ -37,19 +38,21 @@ app.controller("myCtrl", function($scope) {
         </div>
     </div>
     <div class="chatbox-container">
-        <div class="chatbox">
+        <div id="chatbox" class="chatbox">
             <div ng-repeat="data in json.chat">
-                <div ng-if="id == json.clientID ">
+                <div ng-if="data.id == json.clientID">
                     <p class="chat-baloon left chat-baloon-left">{{ data.msg }}</p>
                 </div>
-                <div ng-if="id == json.driverID ">
+                <div ng-if="data.id == json.driverID">
                     <p class="chat-baloon right chat-baloon-right">{{ data.msg }}</p>
                 </div>
             </div>
         </div>
         <form action="" method="post">
             <div class="textbox">
-                <input class ="text-text" id="text" type="text" name="text"></input>
+                <input class ="text-text" id="text" type="text" name="text">
+                <input type="hidden" name="driver_id" value=<%=driverID%>>
+                <input type="hidden" name="client_id" value=<%=id%>>
                 <input class ="kirim-button" id="kirim-button" type="submit" value="Kirim">
             </div>
         </form>
@@ -62,4 +65,8 @@ app.controller("myCtrl", function($scope) {
             <input class ="red-button clickable-button" id="kirim-button" type="submit" value="CLOSE">
         </form>
     </div>
-</div>
+</div>   
+<script>
+    var objDiv = document.getElementById("chatbox");
+    objDiv.scrollTop += objDiv.scrollHeight;
+</script>
