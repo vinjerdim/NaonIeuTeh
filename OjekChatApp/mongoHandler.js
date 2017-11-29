@@ -8,6 +8,12 @@ var router = express.Router();
 var mongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
 
+function allowCROS(res) {
+    res.header('Access-Control-Allow-Origin', "*");
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+}
+
 router.post('/putfcmtoken', function (req, res) {
     allowCROS(res);
     var fcmtoken = req.body.token;
@@ -16,26 +22,30 @@ router.post('/putfcmtoken', function (req, res) {
         if (err)
             throw err;
         var query = {accountID: id};
-        db.collection("fcm_token").find(query, {_id: false}).toArray(function (err, result) {
+        db.collection("fcm_token").updateOne(query, {$set: {token: fcmtoken}}, function (err, res) {
             if (err)
                 throw err;
-            if (result.length === 1) {
-                db.collection("customers").updateOne(query, {$set: {token:fcmtoken}}, function (err, res) {
-                    if (err)
-                        throw err;
-                    console.log("1 document updated");
+            if (res.modifiedCount === 0) {
+                var obj = {accountID: id, token: fcmtoken};
+                db.collection("fcm_token").insertOne(obj, function (error, response) {
+                    if (error)
+                        throw error;
+                    console.log("" + obj + " inserted");
                     db.close();
                 });
             } else {
-                db.collection("fcm_token").insertOne({accountID: id, token: fcmtoken}, function (err, res) {
-                    if (err)
-                        throw err;
-                    console.log("1 document inserted");
-                    db.close();
-                });
+                console.log("Token " + id + " updated");
+                db.close();
             }
         });
     });
+});
+
+router.get('/getfcmtoken', function (req, res) {
+    allowCROS(res);
+    var id = req.query.id;
+    console.log(id);
+    res.end();
 });
 
 module.exports = router;
