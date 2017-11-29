@@ -26,7 +26,7 @@ router.get('/', function (req, res) {
 
 router.get('/find', function (req, res) {
     allowCROS(res);
-    var account_id = req.param('accountid');
+    var account_id = req.query.accountid;
     var sql = "UPDATE account SET driver_ready = '1' WHERE account_id = '" + account_id + "'";
     conn.query(sql, function (err, result) {
         if (err)
@@ -38,7 +38,7 @@ router.get('/find', function (req, res) {
 
 router.get('/cancel', function (req, res) {
     allowCROS(res);
-    var account_id = req.param('accountid');
+    var account_id = req.query.accountid;
     var sql = "UPDATE account SET driver_ready = '0' WHERE account_id = '" + account_id + "'";
     conn.query(sql, function (err, result) {
         if (err)

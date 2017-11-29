@@ -39,54 +39,6 @@ app.get('/', function (req, res) {
     console.log("accessed");
 });
 
-app.post('/putfcmtoken', function (req, res) {
-    allowCROS(res);
-    var fcmtoken = req.body.token;
-    var id = req.body.id;
-    mongoClient.connect(url + "ojek", function (err, db) {
-        if (err)
-            throw err;
-        var query = {accountID: id};
-        db.collection("fcm_token").find(query, {_id: false}).toArray(function (err, result) {
-            if (err)
-                throw err;
-            if (result.length === 1) {
-                db.collection("customers").updateOne(query, {accountID: id, token: fcmtoken}, function (err, res) {
-                    if (err)
-                        throw err;
-                    console.log("1 document updated " + fcmtoken);
-                    db.close();
-                });
-                res.end();
-            } else {
-                db.collection("fcm_token").insertOne({accountID: id, token: fcmtoken}, function (err, res) {
-                    if (err)
-                        throw err;
-                    console.log("1 document inserted");
-                    db.close();
-                });
-                res.end();
-            }
-        });
-    });
-});
-
-app.get('/getfcmtoken', function (req, res) {
-    allowCROS(res);
-    var id = req.query.id;
-    var query = {accountID: id};
-    mongoClient.connect(url + "ojek", function (err, db) {
-        if (err)
-            throw err;
-        db.collection("fcm_token").find(query, {_id: false}).toArray(function (err, result) {
-            if (err)
-                throw err;
-            console.log(result);
-            res.send(result);
-        });
-    });
-});
-
 app.use('/findorder', findorder);
 
 app.use('/order', order);
