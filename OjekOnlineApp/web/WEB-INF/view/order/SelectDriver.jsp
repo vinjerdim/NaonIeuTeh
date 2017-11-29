@@ -16,8 +16,63 @@
         <div class="progress-num">4</div> Complete Your Order
     </div>
 </div>
-<div ng-app="myApp" ng-controller="myCtrl">
-    {{hehe}}
+<div  ng-app="myApp" ng-controller="myCtrl" class="container">
+    <div id="pref-driver" class="select-driver">
+        <div class="selectdriver-header">
+            Preferred Drivers:
+        </div>
+        <div ng-if="json.preference.length == 0">
+            <div class="driver-not-found">Nothing to display :(</div>
+        </div>
+        <div ng-if="json.preference.length > 0">
+            <form method="POST" action="ChatDriver">
+                <div ng-repeat="data in json.preference">
+                    <div class="driver-content">
+                        <img src="" alt="no image" class ="driver-pic">
+                        <div class="driver-name-disp">
+                            {{ data.fullname }}</div>
+                        <div class="driver-rating-disp">
+                            ? {{ data.rating }} <span class="vote-disp">{{ data.vote }}</span>
+                        </div>
+                        <input type="hidden" name="driver_id" value="{{ data.driverID }}">
+                        <input type="hidden" name="pick_loc" value="{{ json.pickLoc }}">
+                        <input type="hidden" name="dest_loc" value="{{ json.destLoc }}">
+                        <input type="hidden" name="driverUsername" value="{{ data.username }}">
+                        <input type="hidden" name="fullname" value="{{ data.fullname }}">
+                        <input type="submit" value="I Choose You" class="accept-button select-driver-btn">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="other-driver" class="select-driver">
+        <div class="selectdriver-header">
+            Other Drivers:
+        </div>
+        <div ng-if="json.others.length == 0">
+            <div class="driver-not-found">Nothing to display :(</div>
+        </div>
+        <div ng-if="json.others.length > 0">
+            <form method="POST" action="ChatDriver">
+                <div ng-repeat="data in json.others">
+                    <div class="driver-content">
+                        <img src="" alt="no image" class ="driver-pic">
+                        <div class="driver-name-disp">
+                            {{ data.fullname }}</div>
+                        <div class="driver-rating-disp">
+                            ? {{ data.rating }} <span class="vote-disp">{{ data.vote }}</span>
+                        </div>
+                        <input type="hidden" name="driver_id" value="{{ data.driverID }}">
+                        <input type="hidden" name="pick_loc" value="{{ json.pickLoc }}">
+                        <input type="hidden" name="dest_loc" value="{{ json.destLoc }}">
+                        <input type="hidden" name="driverUsername" value="{{ data.username }}">
+                        <input type="hidden" name="fullname" value="{{ data.fullname }}">
+                        <input type="submit" value="I Choose You" class="accept-button select-driver-btn">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 <script>
     var pickPoint = '<% out.print(request.getParameter("pick-point"));%>';
@@ -29,7 +84,7 @@
     app.controller('myCtrl', function ($scope, $http) {
         $http.get(url).then(function (response) {
             console.log(response);
-            $scope.hehe = response;
+            $scope.json = response.data;
         }).catch(function (error) {
             console.log("SelectDriver: error getting driver");
         });
