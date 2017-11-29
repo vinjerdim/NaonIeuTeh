@@ -5,7 +5,7 @@
  */
 var express = require('express');
 var app = express();
-var mongoHandler = require('./mongoHandler');
+var tokenHandler = require('./token');
 var order = require('./order');
 var findorder = require('./findorder');
 
@@ -43,7 +43,7 @@ app.use('/findorder', findorder);
 
 app.use('/order', order);
 
-app.use('/', mongoHandler);
+app.use('/token', tokenHandler);
 
 console.log("Listening on Port 3000");
 app.listen(3000);

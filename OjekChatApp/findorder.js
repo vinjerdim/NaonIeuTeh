@@ -28,11 +28,11 @@ router.get('/find', function (req, res) {
     allowCROS(res);
     var account_id = req.query.accountid;
     var sql = "UPDATE account SET driver_ready = '1' WHERE account_id = '" + account_id + "'";
-    conn.query(sql, function (err, result) {
-        if (err)
-            throw err;
-        console.log("Result: " + result);
-        res.send(account_id + " " + req.param('accountid'));
+    conn.query(sql, function (queryErr, queryRes) {
+        if (queryErr)
+            throw queryErr;
+        console.log("findorder.js : find order > result: " + queryRes.toString());
+        res.send(account_id + " " + req.query.accountid);
     });
 });
 
@@ -40,11 +40,11 @@ router.get('/cancel', function (req, res) {
     allowCROS(res);
     var account_id = req.query.accountid;
     var sql = "UPDATE account SET driver_ready = '0' WHERE account_id = '" + account_id + "'";
-    conn.query(sql, function (err, result) {
-        if (err)
-            throw err;
-        console.log("Result: " + result);
-        res.send(account_id + " " + req.param('accountid'));
+    conn.query(sql, function (queryErr, queryRes) {
+        if (queryErr)
+            throw queryErr;
+        console.log("findorder.js : cancel order > result: " + queryRes.toString());
+        res.send(account_id + " " + req.query.accountid);
     });
 });
 

@@ -7,7 +7,6 @@
 function requestMessagingPermission(messaging) {
     messaging.requestPermission().then(function () {
         console.log('Notification permission granted.');
-        return true;
     }).catch(function (err) {
         console.log('Unable to get permission to notify.', err);
     });
@@ -20,8 +19,7 @@ function getMessagingToken(messaging, accountID) {
             messaging.getToken().then(function (currentToken) {
                 if (currentToken) {
                     console.log(currentToken);
-                    $.post("http://localhost:3000/putfcmtoken",
-                            {id: accountID, token: currentToken},
+                    $.post("http://localhost:3000/token/save", {id: accountID, token: currentToken},
                             function (data, status) {
                                 console.log(data);
                                 console.log(status);
@@ -29,7 +27,6 @@ function getMessagingToken(messaging, accountID) {
                 } else {
                     console.log('No Instance ID token available. Request permission to generate one.');
                 }
-                return currentToken;
             }).catch(function (err) {
                 console.log('An error occurred while retrieving token. ', err);
             });
