@@ -39,23 +39,6 @@ app.get('/', function (req, res) {
     console.log("accessed");
 });
 
-app.post('/makevisible', function (req, res) {
-    allowCROS(res);
-    var registrationToken = "dAxBbkJncx8:APA91bFDNW34NSmvkko0cJc2T3ttPM2c8nBS2UkkEzyFwXj5vySz3oSMkyxpRyPxzIYCFMxmd_0WgrOPbaLKRHYc3bM6eKC-Ybm6B3eX7p3fcegK3shQsd7yA0jcJOAtY-mCN9tNQRTg";
-    var payload = {
-        notification: {
-            title: "$GOOG up 1.43% on the day",
-            body: "$GOOG gained 11.80 points to close at 835.67, up 1.43% on the day."
-        }
-    };
-    messagingAdmin.sendToDevice(registrationToken, payload).then(function (response) {
-        console.log("Successfully sent message:", response.results);
-    }).catch(function (error) {
-        console.log("Error sending message:", error);
-    });
-    res.send('OK');
-});
-
 app.post('/putfcmtoken', function (req, res) {
     allowCROS(res);
     var fcmtoken = req.body.token;
@@ -99,7 +82,7 @@ app.get('/getfcmtoken', function (req, res) {
             if (err)
                 throw err;
             console.log(result);
-            res.end();
+            res.send(result);
         });
     });
 });

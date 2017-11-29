@@ -58,10 +58,6 @@ public class DriverList extends HttpServlet {
                 new StringReader(getDrivers(preferredDriver, currentUserID, destLoc)))) {
             result = reader.readObject();
         }
-        result = Json.createObjectBuilder(result)
-                .add("pickLoc", pickLoc)
-                .add("destLoc", destLoc)
-                .build();
         response.getWriter().println(result.toString());
         /*
         String preferenceData = "";

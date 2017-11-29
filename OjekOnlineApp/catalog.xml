@@ -6,10 +6,10 @@
     <system systemId="http://localhost:8080/OjekOnlineService/ProfileService?xsd=1" uri="src/conf/xml-resources/web-service-references/ProfileService/wsdl/localhost_8080/OjekOnlineService/ProfileService.xsd_1.xsd"/>
     <system systemId="http://localhost:8080/OjekOnlineService/EditPrefService?wsdl" uri="src/conf/xml-resources/web-service-references/EditPrefService/wsdl/localhost_8080/OjekOnlineService/EditPrefService.wsdl"/>
     <system systemId="http://localhost:8080/OjekOnlineService/EditPrefService?xsd=1" uri="src/conf/xml-resources/web-service-references/EditPrefService/wsdl/localhost_8080/OjekOnlineService/EditPrefService.xsd_1.xsd"/>
+    <system systemId="http://localhost:8080/OjekOnlineService/HistoryService?wsdl" uri="src/conf/xml-resources/web-service-references/HistoryService/wsdl/localhost_8080/OjekOnlineService/HistoryService.wsdl"/>
+    <system systemId="http://localhost:8080/OjekOnlineService/HistoryService?xsd=1" uri="src/conf/xml-resources/web-service-references/HistoryService/wsdl/localhost_8080/OjekOnlineService/HistoryService.xsd_1.xsd"/>
     <system systemId="http://localhost:8080/OjekIdentityService/AccountService?wsdl" uri="src/conf/xml-resources/web-service-references/AccountService/wsdl/localhost_8080/OjekIdentityService/AccountService.wsdl"/>
     <system systemId="http://localhost:8080/OjekIdentityService/AccountService?xsd=1" uri="src/conf/xml-resources/web-service-references/AccountService/wsdl/localhost_8080/OjekIdentityService/AccountService.xsd_1.xsd"/>
     <system systemId="http://localhost:8080/OjekOnlineService/OrderService?wsdl" uri="src/conf/xml-resources/web-service-references/OrderService/wsdl/localhost_8080/OjekOnlineService/OrderService.wsdl"/>
     <system systemId="http://localhost:8080/OjekOnlineService/OrderService?xsd=1" uri="src/conf/xml-resources/web-service-references/OrderService/wsdl/localhost_8080/OjekOnlineService/OrderService.xsd_1.xsd"/>
-    <system systemId="http://localhost:8080/OjekOnlineService/HistoryService?wsdl" uri="src/conf/xml-resources/web-service-references/HistoryService/wsdl/localhost_8080/OjekOnlineService/HistoryService.wsdl"/>
-    <system systemId="http://localhost:8080/OjekOnlineService/HistoryService?xsd=1" uri="src/conf/xml-resources/web-service-references/HistoryService/wsdl/localhost_8080/OjekOnlineService/HistoryService.xsd_1.xsd"/>
 </catalog>

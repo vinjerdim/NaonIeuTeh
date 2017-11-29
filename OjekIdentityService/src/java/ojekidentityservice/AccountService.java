@@ -70,7 +70,7 @@ public class AccountService {
         //TODO write your implementation code here:
         JsonArray drivers = Json.createArrayBuilder(JsonValue.EMPTY_JSON_ARRAY).build();
         try {
-            String query = String.format("SELECT * FROM account WHERE is_driver = '1'");
+            String query = String.format("SELECT * FROM account WHERE is_driver = '1' AND driver_ready = '1'");
             ResultSet result = new DatabaseIdentity().getQueryResult(query);
             while (result.next()) {
                 String picturePath = result.getString("picture_path");
