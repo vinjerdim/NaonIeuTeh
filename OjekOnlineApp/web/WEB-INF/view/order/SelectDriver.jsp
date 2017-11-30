@@ -95,7 +95,7 @@
             }).catch(function (error) {
                 console.log(error);
             });
-        }
+        };
         $http.get($scope.urlGetDriver).then(function (response) {
             $scope.json = response.data;
         }).catch(function (error) {

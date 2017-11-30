@@ -39,12 +39,10 @@ router.get('/notify', function (req, res) {
             console.log("messaging.js : get token > " + findRes[0].token);
             var token = findRes[0].token;
             var payload = {
-                notification: {
-                    title: "Got notif from " + passID,
-                },
+                notification: {title: "Got notif from " + passID},
                 data: {
-                    id : passID,
-                    name : passName
+                    id: passID,
+                    name: passName
                 }
             };
 
@@ -52,7 +50,7 @@ router.get('/notify', function (req, res) {
                 priority: "high",
                 timeToLive: 60 * 60 * 24
             };
-            
+
             messagingAdmin.sendToDevice(token, payload, options)
                     .then(function (sendRes) {
                         console.log("messaging.js : driver notified > " + JSON.stringify(sendRes));
