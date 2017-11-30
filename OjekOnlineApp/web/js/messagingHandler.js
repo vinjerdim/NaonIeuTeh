@@ -44,9 +44,3 @@ function listenForTokenRefresh(messaging, accountID) {
     });
 }
 
-function listenForMessage(messaging) {
-    messaging.onMessage(function (payload) {
-        console.log("Message received ", payload);
-    });
-}
-

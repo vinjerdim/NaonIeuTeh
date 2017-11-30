@@ -7,7 +7,9 @@ var express = require('express');
 var app = express();
 var tokenHandler = require('./token');
 var order = require('./order');
+var messageHandler = require('./messaging');
 var findorder = require('./findorder');
+
 
 var mongoClient = require('mongodb').MongoClient;
 var url = "mongodb://localhost:27017/";
@@ -16,16 +18,6 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({extended: true}));
-
-var admin = require('firebase-admin');
-var key = require('./serviceAccountKey');
-
-admin.initializeApp({
-    credential: admin.credential.cert(key),
-    databaseURL: "https://naonieuteh-1c736.firebaseio.com"
-});
-
-var messagingAdmin = admin.messaging();
 
 function allowCROS(res) {
     res.header('Access-Control-Allow-Origin', "*");
@@ -44,6 +36,8 @@ app.use('/findorder', findorder);
 app.use('/order', order);
 
 app.use('/token', tokenHandler);
+
+app.use('/message', messageHandler);
 
 console.log("Listening on Port 3000");
 app.listen(3000);
