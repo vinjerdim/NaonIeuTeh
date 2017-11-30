@@ -6,7 +6,7 @@
     String fullname = request.getParameter("fullname");
 %>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-<div  ng-app="myApp" ng-controller="myCtrl" class="container">
+<div ng-app="myApp" ng-controller="myCtrl" class="container" ng-init="loadMessage()">
     <div class="edit-profile-header">
         Make an order       
     </div>
@@ -27,20 +27,20 @@
     <div class="chatbox-container">
         <div id="chatbox" class="chatbox">
             <div ng-repeat="data in json.chat">
-                <div ng-if="data.id == json.pass">
+                <div ng-if="data.id === json.passID">
                     <p class="chat-baloon right chat-baloon-right">{{data.msg}}</p>
                 </div>
-                <div ng-if="data.id == json.driver">
+                <div ng-if="data.id === json.driverID">
                     <p class="chat-baloon left chat-baloon-left">{{data.msg}}</p>
                 </div>
             </div>
         </div>
         <form ng-submit="sendMessage(message)">
-        <div class="textbox">
-            <input class ="text-text" id="text" type="text" name="text" ng-model="message">
-            <input class ="kirim-button" id="kirim-button" type="submit" value="Kirim">
-        </div>
-    </form>
+            <div class="textbox">
+                <input class ="text-text" id="text" type="text" name="text" ng-model="message">
+                <input class ="kirim-button" id="kirim-button" type="submit" value="Kirim">
+            </div>
+        </form>
         <form action="CompleteOrder" method="post">
             <input type="hidden" name="pick_loc" value=<%=pickLoc%>>
             <input type="hidden" name="driver_id" value=<%=driverID%>>
@@ -48,7 +48,7 @@
             <input type="hidden" name="driverUsername" value=<%=driverUsername%>>
             <input type="hidden" name="fullname" value=<%=fullname%>>
             <input class ="red-button clickable-button" id="kirim-button" type="submit" 
-                   value="CLOSE" ng-click="notifySelectedDriver()">
+                   value="CLOSE" ng-click="notifySelectedDriver(1)">
         </form>
     </div>
 </div>
@@ -59,25 +59,46 @@
     var passName = '<%out.print(CookieManager.getCurrentUsername(request));%>';
 
     app.controller("myCtrl", function ($scope, $http) {
-        $scope.id = driverID;
-        $scope.json = {driver: driverID, pass: passID, chat: []};
+        $scope.urlHistory = "http://localhost:3000/message/get?driverid=" + driverID +
+                "&passid=" + passID;
+        $scope.loadMessage = function () {
+            $http.get($scope.urlHistory).then(function (response) {
+                $scope.json = response.data;
+                console.log($scope.json);
+            }).catch(function (error) {
+                console.log(error);
+            });
+        };
         $scope.sendMessage = function (message) {
             if (message !== null && message.length > 0) {
+                $scope.urlSend = "http://localhost:3000/message/send?driverid=" + driverID +
+                        "&passid=" + passID + "&message=" + message + "&sender=" + passID;
+                $http.get($scope.urlSend).then(function (response) {
+                    console.log(response);
+                }).catch(function (error) {
+                    console.log(error);
+                });
                 $scope.json.chat.push({id: passID, msg: message});
+                $scope.notifySelectedDriver("2");
                 $scope.message = "";
             }
         };
-        $scope.urlNotifyDriver = "http://localhost:3000/message/notify?passid=" + passID +
-                "&passname=" + passName + "&driverid=";
-        $scope.notifySelectedDriver = function () {
-            $http.get($scope.urlNotifyDriver + $scope.id).then(function (response) {
+        $scope.notifySelectedDriver = function (code) {
+            $scope.urlNotifyDriver = "http://localhost:3000/message/notify?source=" + passID + "&notifcode=" + code +
+                    "&passname=" + passName + "&destination=";
+            $http.get($scope.urlNotifyDriver + driverID).then(function (response) {
                 console.log(response);
             }).catch(function (error) {
                 console.log(error);
             });
         };
+        messagingApp.onMessage(function (payload) {
+            console.log("ChatDriver.jsp : got message > ", payload);
+            if (payload.data.code === "2") {
+                $scope.loadMessage();
+            }
+        });
     });
-
 </script>
 <script>
     var objDiv = document.getElementById("chatbox");

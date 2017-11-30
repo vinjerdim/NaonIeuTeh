@@ -21,7 +21,7 @@
         <div class="selectdriver-header">
             Preferred Drivers:
         </div>
-        <div ng-if="json.preference.length == 0">
+        <div ng-if="json.preference.length === 0">
             <div class="driver-not-found">Nothing to display :(</div>
         </div>
         <div ng-if="json.preference.length > 0">
@@ -50,7 +50,7 @@
         <div class="selectdriver-header">
             Other Drivers:
         </div>
-        <div ng-if="json.others.length == 0">
+        <div ng-if="json.others.length === 0">
             <div class="driver-not-found">Nothing to display :(</div>
         </div>
         <div ng-if="json.others.length > 0">
@@ -87,8 +87,8 @@
     app.controller('myCtrl', function ($scope, $http) {
         $scope.urlGetDriver = "http://localhost:3000/order?pick-point=" + pickPoint +
                 "&destination=" + destination + "&pref-driver=" + prefDriver;
-        $scope.urlNotifyDriver = "http://localhost:3000/message/notify?passid=" + passID + 
-                "&passname=" + passName + "&driverid=";
+        $scope.urlNotifyDriver = "http://localhost:3000/message/notify?source=" + passID + "&notifcode=1" + 
+                "&passname=" + passName + "&destination=";
         $scope.notifySelectedDriver = function (id) {
             $http.get($scope.urlNotifyDriver + id).then(function (response) {
                 console.log(response);

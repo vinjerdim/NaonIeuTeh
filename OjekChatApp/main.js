@@ -16,7 +16,6 @@ var url = "mongodb://localhost:27017/";
 var bodyParser = require('body-parser');
 
 app.use(bodyParser.json());
-
 app.use(bodyParser.urlencoded({extended: true}));
 
 function allowCROS(res) {

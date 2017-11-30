@@ -9,7 +9,7 @@
 <script>
     messagingApp.onMessage(function (payload) {
         console.log("WaitingOrder.jsp : got notif > ", payload);
-        window.location.href = "GotAnOrder?passid=" + payload.data.id + 
+        window.location.href = "GotAnOrder?passid=" + payload.data.senderid + 
                 "&passname=" + payload.data.name;
     });
     

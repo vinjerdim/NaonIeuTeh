@@ -25,39 +25,115 @@ function allowCROS(res) {
 
 router.get('/notify', function (req, res) {
     allowCROS(res);
-    var driverID = req.query.driverid;
-    var passID = req.query.passid;
+    var src = req.query.source;
+    var dest = req.query.destination;
     var passName = req.query.passname;
-    var query = {accountID: driverID};
-    console.log("order.js : notify > ", driverID);
+    var notifCode = req.query.notifcode;
+    var query = {accountID: dest};
+    console.log("messaging.js : notify > ", src);
+
     mongoClient.connect(url + "ojek", function (connectErr, db) {
         if (connectErr)
             throw connectErr;
         db.collection("fcm_token").find(query).toArray(function (findErr, findRes) {
             if (findErr)
                 throw findErr;
-            console.log("messaging.js : get token > " + findRes[0].token);
+            console.log("messaging.js : notify : get token > " + findRes[0].token);
             var token = findRes[0].token;
-            var payload = {
-                notification: {title: "Got notif from " + passID},
-                data: {
-                    id: passID,
-                    name: passName
-                }
-            };
-
+            var payload;
+            if (notifCode === "1") {
+                payload = {
+                    notification: {
+                        title: "Change page"
+                    },
+                    data: {
+                        senderid: src,
+                        name: passName,
+                        code: notifCode
+                    }
+                };
+            } else if (notifCode === "2") {
+                payload = {
+                    notification: {
+                        title: "Reload chat"
+                    },
+                    data: {
+                        senderid: src,
+                        code: notifCode
+                    }
+                };
+            }
             var options = {
                 priority: "high",
                 timeToLive: 60 * 60 * 24
             };
 
-            messagingAdmin.sendToDevice(token, payload, options)
-                    .then(function (sendRes) {
-                        console.log("messaging.js : driver notified > " + JSON.stringify(sendRes));
-                    }).catch(function (sendErr) {
-                console.log("messaging.js : notify failed > " + sendErr);
+            messagingAdmin.sendToDevice(token, payload, options).then(function (sendRes) {
+                console.log("messaging.js : notify : success > " + JSON.stringify(sendRes));
+            }).catch(function (sendErr) {
+                console.log("messaging.js : notify : failed > " + sendErr);
             });
             db.close();
+        });
+    });
+});
+
+router.get('/send', function (req, res) {
+    allowCROS(res);
+    var driver = req.query.driverid;
+    var pass = req.query.passid;
+    var message = req.query.message;
+    var sender = req.query.sender;
+    var query = {driverID: driver, passID: pass};
+
+    mongoClient.connect(url + "ojek", function (connectErr, db) {
+        if (connectErr)
+            throw connectErr;
+        db.collection("chat_history").find(query).toArray(function (queryErr, queryRes) {
+            if (queryErr)
+                throw queryErr;
+            console.log("messaging.js : send : find message ", JSON.stringify(queryRes));
+            if (queryRes.length === 0) {
+                var obj = {driverID: driver, passID: pass, chat: [{id: sender, msg: message}]};
+                db.collection("chat_history").insertOne(obj, function (insertErr, insertRes) {
+                    if (insertErr)
+                        throw insertErr;
+                    console.log("message.js : new conversation > ", insertRes.result);
+                    db.close();
+                });
+            } else {
+                var temp = queryRes[0].chat;
+                temp.push({id: sender, msg: message});
+                db.collection("chat_history").updateOne(query, {$set: {chat: temp}}, function (updateErr, updateRes) {
+                    if (updateErr)
+                        throw updateErr;
+                    console.log("message.js : conversation added > ", updateRes.result);
+                    db.close();
+                });
+            }
+            db.close();
+        });
+    });
+});
+
+router.get('/get', function (req, res) {
+    allowCROS(res);
+    var driver = req.query.driverid;
+    var pass = req.query.passid;
+    var query = {driverID: driver, passID: pass};
+
+    mongoClient.connect(url + "ojek", function (connectErr, db) {
+        if (connectErr)
+            throw connectErr;
+        db.collection("chat_history").find(query).toArray(function (queryErr, queryRes) {
+            if (queryErr)
+                throw queryErr;
+            console.log("messaging.js : get : find message ", JSON.stringify(queryRes));
+            if (queryRes.length >  0) {
+                res.send(queryRes[0]);
+            } else {
+                res.send({driverID: driver, passID: pass, chat: []});
+            }
         });
     });
 });
